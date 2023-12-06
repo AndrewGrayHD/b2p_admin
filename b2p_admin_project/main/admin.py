@@ -21,14 +21,14 @@ class  B2p_site_Admin(admin.ModelAdmin):
     ordering = ['site']
 
 class  B2p_project_nameAdmin(admin.ModelAdmin):
-    search_fields=('project_2','project_1','site__site')
-    list_display = ('project_2','project_1','site','effectived_date','expiration_date',)
-    ordering = ['-project_2']
+    search_fields=('true_program__program','project_1','site__site')
+    list_display = ('true_program','project_1','site','effective_date','expiration_date',)
+    ordering = ['-true_program__program']
 
 class  B2p_reference_Admin(admin.ModelAdmin):
-    search_fields=('project__program','site__site','billing_type','effectived_date','expiration_date',)
-    list_display = ('project','site','billing_type','effectived_date',)
-    ordering = ['-effectived_date']
+    search_fields=('project__program','site__site','billing_type','effective_date','expiration_date',)
+    list_display = ('project','site','billing_type','effective_date',)
+    ordering = ['-effective_date']
 
 class  B2p_flex_nesting_agents_program_Admin(admin.ModelAdmin):
     search_fields=('lob','site','true_program__program','true_site__site','assignment',)

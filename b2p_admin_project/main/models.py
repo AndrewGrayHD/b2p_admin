@@ -20,9 +20,9 @@ class b2p_project_name(models.Model):
 
     project_1=models.CharField(max_length=255,null=False,blank=False)
     site=models.ForeignKey(b2p_site, on_delete=models.PROTECT,null=False,blank=False)
-    project_2=models.CharField(max_length=255,null=False,blank=False,db_index=True)
+    true_program=models.ForeignKey(b2p_program, on_delete=models.PROTECT,null=True,blank=True)
     is_active=models.BooleanField(default=True)
-    effectived_date = models.DateField(default=datetime.date.today,null=False,blank=False)
+    effective_date = models.DateField(default=datetime.date.today,null=False,blank=False)
     expiration_date = models.DateField(default='2699-12-31',null=False,blank=False)
 
     def __str__(self) :
@@ -46,7 +46,7 @@ class b2p_reference(models.Model):
     project=models.ForeignKey(b2p_program, on_delete=models.PROTECT,null=False,blank=False)
     site=models.ForeignKey(b2p_site, on_delete=models.PROTECT,null=False,blank=False)
     billing_type=models.CharField(max_length=50,null=False,blank=False,choices=BILLING_TYPE)
-    effectived_date = models.DateField(default=datetime.date.today,null=False,blank=False)
+    effective_date = models.DateField(default=datetime.date.today,null=False,blank=False)
     expiration_date = models.DateField(default='2699-12-31',null=False,blank=False)
     b2p_target = models.FloatField(null=True,blank=True)
     aht_cap= models.FloatField(null=True,blank=True)
