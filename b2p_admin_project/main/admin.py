@@ -8,6 +8,7 @@ from main.models import b2p_flex_sme_ratio_program
 from main.models import b2p_rates_program
 from main.models import b2p_program
 from main.models import b2p_assignment
+from main.models import b2p_program_source
 
 
 
@@ -50,6 +51,12 @@ class  B2p_rates_program_Admin(admin.ModelAdmin):
     ordering = ['-true_program__program']
 
 
+class  B2p_program_sourceAdmin(admin.ModelAdmin):
+    search_fields=('true_program__program','source','site__site')
+    list_display = ('true_program','source','site','effective_date','expiration_date',)
+    ordering = ['-true_program__program']
+
+
 admin.site.register(b2p_site,B2p_site_Admin)
 admin.site.register(b2p_project_name,B2p_project_nameAdmin)
 admin.site.register(b2p_reference,B2p_reference_Admin)
@@ -58,3 +65,4 @@ admin.site.register(b2p_flex_sme_ratio_program,B2p_flex_sme_ratio_program_Admin)
 admin.site.register(b2p_rates_program,B2p_rates_program_Admin)
 admin.site.register(b2p_program,B2p_program_Admin)
 admin.site.register(b2p_assignment,B2p_assignment_Admin)
+admin.site.register(b2p_program_source,B2p_program_sourceAdmin)

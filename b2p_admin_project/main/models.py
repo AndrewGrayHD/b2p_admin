@@ -77,8 +77,8 @@ class b2p_flex_nesting_agents_program(models.Model):
     true_site=models.ForeignKey(b2p_site, on_delete=models.PROTECT,null=True,blank=True)
     assignment=models.ForeignKey(b2p_assignment, on_delete=models.PROTECT,null=True,blank=True)
 
-    def __str__(self) :
-        return ' - '.join([self.lob,self.site])
+    # def __str__(self) :
+    #     return ' - '.join([self.lob,self.site])
 
 class b2p_flex_sme_ratio_program(models.Model):
 
@@ -89,8 +89,8 @@ class b2p_flex_sme_ratio_program(models.Model):
     true_site=models.ForeignKey(b2p_site, on_delete=models.PROTECT,null=True,blank=True)
     assignment=models.ForeignKey(b2p_assignment, on_delete=models.PROTECT,null=True,blank=True)
 
-    def __str__(self) :
-        return ' - '.join([self.lob,self.site])
+    # def __str__(self) :
+    #     return ' - '.join([self.lob,self.site])
 
 class b2p_rates_program(models.Model):
 
@@ -101,5 +101,19 @@ class b2p_rates_program(models.Model):
     true_site=models.ForeignKey(b2p_site, on_delete=models.PROTECT,null=True,blank=True)
     assignment=models.ForeignKey(b2p_assignment, on_delete=models.PROTECT,null=True,blank=True)
 
-    def __str__(self) :
-        return ' - '.join([self.lob,self.site])
+    # def __str__(self) :
+    #     return ' - '.join([self.lob,self.site])
+
+
+class b2p_program_source(models.Model):
+
+    source=models.CharField(max_length=255,null=False,blank=False)
+    site=models.ForeignKey(b2p_site, on_delete=models.PROTECT,null=False,blank=False)
+    true_program=models.ForeignKey(b2p_program, on_delete=models.PROTECT,null=True,blank=True)
+    is_active=models.BooleanField(default=True)
+    effective_date = models.DateField(default=datetime.date.today,null=False,blank=False)
+    expiration_date = models.DateField(default='2699-12-31',null=False,blank=False)
+
+    # def __str__(self) :
+    #     return ' - '.join([self.project_2,self.project_1,self.site.site])  
+
